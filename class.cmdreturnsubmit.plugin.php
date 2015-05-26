@@ -4,7 +4,7 @@
 $PluginInfo['CmdReturnSubmit'] = array(
 	'Name' => 'CmdReturnSubmit',
 	'Description' => 'Users can use cmd+return or ctrl+return to finish a post reply.',
-	'Version' => '0.9',
+	'Version' => '0.9.1',
 	'RequiredApplications' => array('Vanilla' => '2.1'),
 	'RequiredPlugins' => FALSE,
 	'RequiredTheme' => FALSE,
@@ -20,7 +20,7 @@ class CmdReturnSubmit extends Gdn_Plugin {
 	
 	public function DiscussionController_AfterFormButtons_Handler() {
 		echo '<script type="text/javascript">';
-		echo "$('#Form_Body').keypress(function(event){
+		echo "$('#Form_Body').keydown(function(event){
 			if((event.ctrlKey||event.metaKey) && ((event.keyCode == 0xA)||(event.keyCode == 0xD)))
 				$('#Form_PostComment').click();
 			})";
@@ -29,7 +29,7 @@ class CmdReturnSubmit extends Gdn_Plugin {
 	
 	public function ProfileController_BeforeStatusForm_Handler() {
 		echo '<script type="text/javascript">';
-		echo "$(document).ready(function(){ $('#Form_Comment').keypress(function(event){
+		echo "$(document).ready(function(){ $('#Form_Comment').keydown(function(event){
 			if((event.ctrlKey||event.metaKey) && ((event.keyCode == 0xA)||(event.keyCode == 0xD)))
 				$('#Form_Share').click();
 			})})";
