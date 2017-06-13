@@ -4,7 +4,7 @@
 $PluginInfo['CmdReturnSubmit'] = array(
 	'Name' => 'CmdReturnSubmit',
 	'Description' => 'Users can use cmd+return or ctrl+return for post submits.',
-	'Version' => '0.9.2',
+	'Version' => '0.9.3',
 	'RequiredApplications' => array('Vanilla' => '2.1'),
 	'RequiredPlugins' => FALSE,
 	'RequiredTheme' => FALSE,
@@ -32,6 +32,12 @@ class CmdReturnSubmit extends Gdn_Plugin {
 		echo "$('#Form_Body').keydown(function(event){
 			if((event.ctrlKey||event.metaKey) && ((event.keyCode == 0xA)||(event.keyCode == 0xD)))
 				$('#Form_Save').click();
+			})";
+		echo '</script>';
+		
+		echo '<script type="text/javascript">';
+		echo "$('#Form_Body').keydown(function(event){
+			if((event.ctrlKey||event.metaKey) && ((event.keyCode == 0xA)||(event.keyCode == 0xD)))
 				$('#Form_SaveComment').click();
 			})";
 		echo '</script>';
